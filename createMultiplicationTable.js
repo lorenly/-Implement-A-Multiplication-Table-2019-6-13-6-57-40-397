@@ -1,7 +1,7 @@
-function multiply(start, end) {
+function createMultiplicationTable(start, end) {
 	let multiplicationTable = "";
 
-	if(rangeOfOneToThousand && isNumerical && startNumNotGreaterThanEnd){
+	if(isValid(start,end)){
 	    for(let i = start; i <= end; i++){
 	    	for(let j = start; j <= i; j++){
 	    		let product = i*j;
@@ -16,26 +16,28 @@ function multiply(start, end) {
 }
 
 function rangeOfOneToThousand(start, end){
-	if(start > 0 && end <= 1000)
-		return true;
-	return false;
-}
+	const isStartNumWithInRange = start > 1 && start <= 1000;
+	const isEndNumWithInRange = end > 1 && end <= 1000;
 
-function isNumerical(start, end){
-	if(isNaN(start) || isNaN(end) || start == null || end == null)
-		return false;
-	return true;
+	return isStartNumWithInRange && isEndNumWithInRange;
 }
 
 function startNumNotGreaterThanEnd(start, end){
-	if(start <= end)
+	return start <= end;
+}
+
+function isValid(start, end){
+	const num1IsNotGreaterThanNum2 = startNumNotGreaterThanEnd(start, end);
+	const withInRange = rangeOfOneToThousand(start,end);
+
+	if(num1IsNotGreaterThanNum2 && withInRange)
 		return true;
 	return null;
-
 }
+
 module.exports = {
-					multiply: multiply,
+					createMultiplicationTable: createMultiplicationTable,
 					rangeOfOneToThousand: rangeOfOneToThousand,
-					isNumerical: isNumerical,	
-					startNumNotGreaterThanEnd, startNumNotGreaterThanEnd		
+					startNumNotGreaterThanEnd, startNumNotGreaterThanEnd,
+					isValid: isValid		
 				};
