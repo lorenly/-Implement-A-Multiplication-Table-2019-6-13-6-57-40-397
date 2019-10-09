@@ -14,7 +14,7 @@ it ('should show MultiplicationTable of two numbers', () => {
 
 it ('should be true when range of start - end numbers is between 1 to 1000', () => {
 	start = 2;
-	end = 3;
+	end = 4;
 	result = MultiplicationTable.rangeOfOneToThousand(start, end);
     expect(result).toBe(true);
 });
@@ -49,13 +49,13 @@ it ('should be true when start and end number is numeric', () => {
 
 it ('should be false when start number is not numeric', () => {
 	start = 'not Number';
-	end = 1001;
+	end = 1000;
 	result = MultiplicationTable.isNumerical(start, end);
     expect(result).toBe(false);
 });
 
 it ('should be false when end number is not numeric', () => {
-	start = 0;
+	start = 1;
 	end = null;
 	result = MultiplicationTable.isNumerical(start, end);
     expect(result).toBe(false);
